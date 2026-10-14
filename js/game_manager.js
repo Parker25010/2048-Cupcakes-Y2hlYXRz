@@ -174,6 +174,9 @@ GameManager.prototype.fillLegend = function () {
     cell.classList.add('cell-' + exp);
     img.src = superCupcake ? superCupcake.image : "style/img/" + exp + ".jpg";
     img.alt = superCupcake ? "Georgetown Cupcake " + superCupcake.name : "Georgetown Cupcake " + Localize(exp);
+    img.style.backgroundColor = "#fff";
+    img.style.objectFit = "contain";
+    cell.style.backgroundColor = "#fff";
     cell.appendChild(img);
     grid.appendChild(cell);
     row.appendChild(grid);
