@@ -68,15 +68,13 @@ HTMLActuator.prototype.addTile = function (tile) {
 
   inner.classList.add("tile-inner");
 
-  // Keep each tile on its matching cupcake photo. For values above 8192,
-  // use the highest available photo instead of wrapping back to the first cupcake.
-  var cupcakePhotoValues = [2, 4, 8, 16, 32, 64, 128,
-                            256, 512, 1024, 2048, 4096, 8192];
-  var tileLevel = Math.round(Math.log(tile.value) / Math.LN2) - 1;
-  var photoIndex = Math.max(0, Math.min(tileLevel, cupcakePhotoValues.length - 1));
-  var imageValue = cupcakePhotoValues[photoIndex];
-  img.alt = "Georgetown Cupcake photo for tile " + tile.value;
-  img.src = "style/img/" + imageValue + ".jpg";
+  // Use the matching photo for 2–8192 and the individual illustrated
+  // cupcakes for supertiles. Never wrap supertiles back to the first photo.
+  var imageValue = tile.value;
+  var imageExtension = imageValue <= 8192 ? "jpg" : "svg";
+  if (imageValue > 131072) imageValue = 131072;
+  img.alt = "Cupcake for tile " + tile.value;
+  img.src = "style/img/" + imageValue + "." + imageExtension;
   inner.appendChild(img);
 
   if (tile.previousPosition) {
