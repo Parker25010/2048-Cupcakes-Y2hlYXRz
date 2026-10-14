@@ -33,7 +33,7 @@
 
     <div class="above-game">
       <p class="game-intro">Join tiles and destroy <strong>EMPIRE!</strong></p>
-      <a class="restart-button">New Game High Tiles: OFF</a>
+      <a class="restart-button">New Game</a>
     </div>
 
     <div class="game-container">
@@ -92,6 +92,9 @@
       Cupcakes images by <a href="http://www.georgetowncupcake.com/" title="Georgetown Cupcake | DC Cupcakes | About">Georgetown Cupcake</a>.
     </p>
     <p class="repo-link"><small>hosted on <a href="https://github.com/0x0800/">GitHub</a></small></p>
+    <div class="tile-mode-control">
+      <a id="toggle-tile-mode" class="tile-mode-toggle" role="button" tabindex="0" aria-pressed="false">High Tiles: OFF</a>
+    </div>
   </div>
 
   <script src="js/bind_polyfill.js"></script>
@@ -127,6 +130,26 @@
     })();
 
   </script>
-  <script> (function () { var button = document.getElementById("toggle-tile-mode"); button.addEventListener("click", function () { var game = window.gameManager; if (!game) { alert("Could not find the game manager instance."); return; } game.highTileMode = !game.highTileMode; button.textContent = game.highTileMode ? "High Tiles: ON" : "High Tiles: OFF"; }); })(); </script>
+  <script>
+    (function () {
+      var button = document.getElementById("toggle-tile-mode");
+      if (!button) return;
+
+      function toggleHighTiles(event) {
+        if (event.type === "keydown" && event.key !== "Enter" && event.key !== " ") return;
+        if (event.type === "keydown") event.preventDefault();
+        var game = window.gameManager;
+        if (!game) return;
+
+        game.highTileMode = !game.highTileMode;
+        button.textContent = game.highTileMode ? "High Tiles: ON" : "High Tiles: OFF";
+        button.setAttribute("aria-pressed", String(game.highTileMode));
+        game.restart();
+      }
+
+      button.addEventListener("click", toggleHighTiles);
+      button.addEventListener("keydown", toggleHighTiles);
+    })();
+  </script>
 </body>
 </html>
