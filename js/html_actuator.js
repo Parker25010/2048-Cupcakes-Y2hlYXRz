@@ -67,6 +67,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   this.applyClasses(wrapper, classes);
 
   inner.classList.add("tile-inner");
+  inner.style.backgroundColor = "#fff";
 
   // Use the original Georgetown Cupcake photos for 2–8192, then
   // official Georgetown Cupcake product images for each supertile.
@@ -83,6 +84,8 @@ HTMLActuator.prototype.addTile = function (tile) {
     131072: "https://georgetowncupcake.com/cdn/shop/files/GT_Singles_ButterscotchWaffleCone_9491aa55-74c9-473b-9405-04aa367c512b.png?v=1784276622&width=1000"
   };
   img.alt = "Georgetown Cupcake " + (superCupcakeNames[tile.value] || "photo") + " for tile " + tile.value;
+  img.style.backgroundColor = "#fff";
+  img.style.objectFit = "contain";
   img.src = tile.value <= 8192
     ? "style/img/" + tile.value + ".jpg"
     : (superCupcakeImages[tile.value] || superCupcakeImages[131072]);
