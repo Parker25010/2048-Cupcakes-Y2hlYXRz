@@ -147,8 +147,8 @@ GameManager.prototype.fillLegend = function () {
       image: "https://georgetowncupcake.com/cdn/shop/files/GTC_Unicorn_FT_80758531-6b23-4c2c-8298-2b4544cd8c61.png?v=1784276629&width=1000"
     },
     32768: {
-      name: "Chocolate Sundae",
-      image: "https://georgetowncupcake.com/cdn/shop/files/GT_ChocolateSundae_95e82287-8b70-466d-872e-e37949c2e966.png?v=1784276628&width=1000"
+      name: "Lava Fudge",
+      image: "https://georgetowncupcake.com/cdn/shop/files/GTC_LavaFudge_FT_ef2ff533-6c68-49d5-828e-a62bf1799600.png?v=1784276624&width=1000"
     },
     65536: {
       name: "Red Velvet",
