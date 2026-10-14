@@ -67,13 +67,16 @@ HTMLActuator.prototype.addTile = function (tile) {
   this.applyClasses(wrapper, classes);
 
   inner.classList.add("tile-inner");
-  // inner.textContent = tile.value;
-  // img.style.width = '100%';
-  // Use the original cupcake photos for classic tiles and illustrated art for new super tiles.
-  var imageValue = Math.min(tile.value, 131072);
-  var imageExtension = imageValue > 8192 ? ".svg" : ".jpg";
-  img.alt = "Cupcake tile " + tile.value;
-  img.src = "style/img/" + imageValue + imageExtension;
+
+  // Use real Georgetown Cupcake photos for every tile, including super tiles.
+  // Recycle the existing photo set after 8192 so high tiles stay photographic.
+  var cupcakePhotoValues = [2,  4,  8,  16,  32,  64,  128,
+                            256, 512, 1024, 2048, 4096, 8192];
+  var tileLevel = Math.round(Math.log(tile.value) / Math.LN2) - 1;
+  var photoIndex = tileLevel % cupcakePhotoValues.length;
+  var imageValue = cupcakePhotoValues[photoIndex];
+  img.alt = "Georgetown Cupcake photo for tile " + tile.value;
+  img.src = "style/img/" + imageValue + ".jpg";
   inner.appendChild(img);
 
   if (tile.previousPosition) {
@@ -95,7 +98,7 @@ HTMLActuator.prototype.addTile = function (tile) {
     this.applyClasses(wrapper, classes);
   }
 
-  // Add the inner part of the tile to the wrapper
+  // Add the inner part to the wrapper
   wrapper.appendChild(inner);
 
   // Put the tile on the board
@@ -121,36 +124,31 @@ HTMLActuator.prototype.updateScore = function (score, points) {
 
   var difference = score - this.score;
   this.score = score;
-	var pointDifference = points - this.points;
-	this.points = points;
+  var pointDifference = points - this.points;
+  this.points = points;
 
-  // this.scoreContainer.textContent = this.score;
-	this.scorePoints.textContent = this.points;
-  this.scoreContainer.textContent = Localize( "p" + this.score );
+  this.scorePoints.textContent = this.points;
+  this.scoreContainer.textContent = Localize("p" + this.score);
 
   if (difference > 0) {
     var addition = document.createElement("div");
     addition.classList.add("score-addition");
-    // addition.textContent = "+" + difference;
-    addition.textContent = Localize( "p" + this.score );
+    addition.textContent = Localize("p" + this.score);
 
     this.scoreContainer.appendChild(addition);
   }
 
-	if (pointDifference > 0) {
-		var punti = document.createElement("div");
-		punti.classList.add("score-addition");
-		punti.textContent = "+" + pointDifference;
-		this.scorePoints.appendChild(punti);
-	}
+  if (pointDifference > 0) {
+    var punti = document.createElement("div");
+    punti.classList.add("score-addition");
+    punti.textContent = "+" + pointDifference;
+    this.scorePoints.appendChild(punti);
+  }
 };
 
 HTMLActuator.prototype.updateBestScore = function (bestScore, bestPoints) {
-  this.bestContainer.textContent = Localize( "p" + bestScore);
+  this.bestContainer.textContent = Localize("p" + bestScore);
   this.bestPoints.textContent = bestPoints;
-
-	// var difference = score - this.score;
-	// this.score = score;
 };
 
 HTMLActuator.prototype.message = function (won) {
@@ -180,7 +178,7 @@ HTMLActuator.prototype.scoreTweetButton = function () {
   tweet.setAttribute("data-counturl", "http://0x0800.github.io/2048-CUPCAKES");
   tweet.textContent = "Tweet";
 
-  var text = Localize("tweet1") + Localize( this.score ).toUpperCase() + '", ' + this.points + " Kcal " + Localize("tweet2");
+  var text = Localize("tweet1") + Localize(this.score).toUpperCase() + '", ' + this.points + " Kcal " + Localize("tweet2");
   tweet.setAttribute("data-text", text);
 
   return tweet;
