@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Cupcake for tile 32768">
+  <defs><linearGradient id="frost" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ce6ff"/><stop offset=".58" stop-color="#47b9f2"/><stop offset="1" stop-color="#2573cf"/></linearGradient><linearGradient id="case" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b84c76"/><stop offset=".5" stop-color="#ff9bbd"/><stop offset="1" stop-color="#c74f7e"/></linearGradient><filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#6a3155" flood-opacity=".22"/></filter></defs>
+  <rect width="256" height="256" rx="24" fill="#fff7fb"/>
+  <circle cx="128" cy="117" r="91" fill="#8ce6ff" opacity=".12"/>
+  <g filter="url(#shadow)">
+   <path d="M71 132 Q66 114 84 108 Q81 91 99 89 Q107 70 127 82 Q144 64 158 83 Q181 82 180 103 Q199 113 184 131 Q169 143 128 141 Q89 143 71 132Z" fill="url(#frost)"/>
+   <path d="M77 130 L91 195 Q128 211 165 195 L180 130 Q128 146 77 130Z" fill="url(#case)" stroke="#a73c68" stroke-width="3" stroke-linejoin="round"/>
+   <path d="M99 143 L107 198 M123 145 L128 202 M149 143 L148 198 M169 138 L163 192" stroke="#ffe0eb" stroke-width="5" opacity=".8"/>
+   <path d="M78 132 Q128 151 179 132" fill="none" stroke="#fff0f6" stroke-width="5" stroke-linecap="round"/>
+   <rect x="87" y="91" width="14" height="6" rx="3" transform="rotate(-25 87 91)" fill="#fff1a6"/><rect x="118" y="76" width="14" height="6" rx="3" transform="rotate(18 118 76)" fill="#ff7bb2"/><rect x="145" y="98" width="14" height="6" rx="3" transform="rotate(-18 145 98)" fill="#fff"/><rect x="103" y="112" width="14" height="6" rx="3" transform="rotate(25 103 112)" fill="#baff8b"/><rect x="133" y="124" width="14" height="6" rx="3" transform="rotate(-32 133 124)" fill="#fff1a6"/><rect x="158" y="116" width="14" height="6" rx="3" transform="rotate(20 158 116)" fill="#ff7bb2"/><rect x="74" y="110" width="14" height="6" rx="3" transform="rotate(35 74 110)" fill="#fff"/>
+   <path d="M118 82 Q126 69 135 82" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+  </g>
+  <text x="128" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="19" fill="#63314d">32,768</text>
+ </svg>
