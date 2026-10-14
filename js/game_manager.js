@@ -140,9 +140,10 @@ GameManager.prototype.fillLegend = function () {
     legend[0].removeChild(legend[0].querySelector(".legend-row"));
   }
 
-  // List every available cupcake photo alongside its tile value.
-  for (var i = 1; i <= 13; i++) {
+  // List every available cupcake asset, including the four supertile illustrations.
+  for (var i = 1; i <= 17; i++) {
     var exp = Math.pow(2, i);
+    var extension = exp <= 8192 ? "jpg" : "svg";
     var row = document.createElement("div");
     var grid = document.createElement("div");
     var cell = document.createElement("div");
@@ -152,11 +153,13 @@ GameManager.prototype.fillLegend = function () {
     grid.classList.add('legend-grid');
     cell.classList.add('legend-cell');
     cell.classList.add('cell-' + exp);
-    img.src = "style/img/" + exp + ".jpg";
+    img.src = "style/img/" + exp + "." + extension;
+    img.alt = "Cupcake for tile " + exp;
     cell.appendChild(img);
     grid.appendChild(cell);
     row.appendChild(grid);
-    p.textContent = Localize(exp) + "  (" + kcal(exp) + " Kcal)";
+    var calories = kcal(exp);
+    p.textContent = Localize(exp) + (calories ? "  (" + calories + " Kcal)" : "  (Super Cupcake)");
     row.appendChild(p);
 
     legend[0].appendChild(row);
