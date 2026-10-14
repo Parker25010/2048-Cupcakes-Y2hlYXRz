@@ -127,5 +127,6 @@
     })();
 
   </script>
+  <script> (function () { var button = document.getElementById("toggle-tile-mode"); button.addEventListener("click", function () { var game = window.gameManager; if (!game) { alert("Could not find the game manager instance."); return; } game.highTileMode = !game.highTileMode; button.textContent = game.highTileMode ? "High Tiles: ON" : "High Tiles: OFF"; }); })(); </script>
 </body>
 </html>
