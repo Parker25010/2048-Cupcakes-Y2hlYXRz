@@ -135,6 +135,12 @@ GameManager.prototype.localizeElements = function () {
 GameManager.prototype.fillLegend = function () {
 
   var legend = document.getElementsByClassName("tile-legend");
+  // Remove previously rendered entries so restarting the game never duplicates the list.
+  while (legend[0].querySelector(".legend-row")) {
+    legend[0].removeChild(legend[0].querySelector(".legend-row"));
+  }
+
+  // List every available cupcake photo alongside its tile value.
   for (var i = 1; i <= 13; i++) {
     var exp = Math.pow(2, i);
     var row = document.createElement("div");
