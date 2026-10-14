@@ -73,13 +73,13 @@ HTMLActuator.prototype.addTile = function (tile) {
   // official Georgetown Cupcake product images for each supertile.
   var superCupcakeNames = {
     16384: "Unicorn",
-    32768: "Chocolate Sundae",
+    32768: "Lava Fudge",
     65536: "Red Velvet",
     131072: "Butterscotch Waffle Cone"
   };
   var superCupcakeImages = {
     16384: "https://georgetowncupcake.com/cdn/shop/files/GTC_Unicorn_FT_80758531-6b23-4c2c-8298-2b4544cd8c61.png?v=1784276629&width=1000",
-    32768: "https://georgetowncupcake.com/cdn/shop/files/GT_ChocolateSundae_95e82287-8b70-466d-872e-e37949c2e966.png?v=1784276628&width=1000",
+    32768: "https://georgetowncupcake.com/cdn/shop/files/GTC_LavaFudge_FT_ef2ff533-6c68-49d5-828e-a62bf1799600.png?v=1784276624&width=1000",
     65536: "https://georgetowncupcake.com/cdn/shop/files/GTC_RedVelvet_FT_1_c02219b7-d1a1-4ada-976d-ba295794e232.png?v=1784276623&width=1000",
     131072: "https://georgetowncupcake.com/cdn/shop/files/GT_Singles_ButterscotchWaffleCone_9491aa55-74c9-473b-9405-04aa367c512b.png?v=1784276622&width=1000"
   };
