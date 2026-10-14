@@ -140,10 +140,29 @@ GameManager.prototype.fillLegend = function () {
     legend[0].removeChild(legend[0].querySelector(".legend-row"));
   }
 
-  // List every available cupcake asset, including the four supertile illustrations.
+  // Official flavor names and product images for the high-value cupcakes.
+  var superCupcakes = {
+    16384: {
+      name: "Unicorn",
+      image: "https://georgetowncupcake.com/cdn/shop/files/GTC_Unicorn_FT_80758531-6b23-4c2c-8298-2b4544cd8c61.png?v=1784276629&width=1000"
+    },
+    32768: {
+      name: "Chocolate Sundae",
+      image: "https://georgetowncupcake.com/cdn/shop/files/GT_ChocolateSundae_95e82287-8b70-466d-872e-e37949c2e966.png?v=1784276628&width=1000"
+    },
+    65536: {
+      name: "Red Velvet",
+      image: "https://georgetowncupcake.com/cdn/shop/files/GTC_RedVelvet_FT_1_c02219b7-d1a1-4ada-976d-ba295794e232.png?v=1784276623&width=1000"
+    },
+    131072: {
+      name: "Butterscotch Waffle Cone",
+      image: "https://georgetowncupcake.com/cdn/shop/files/GT_Singles_ButterscotchWaffleCone_9491aa55-74c9-473b-9405-04aa367c512b.png?v=1784276622&width=1000"
+    }
+  };
+
   for (var i = 1; i <= 17; i++) {
     var exp = Math.pow(2, i);
-    var extension = exp <= 8192 ? "jpg" : "svg";
+    var superCupcake = superCupcakes[exp];
     var row = document.createElement("div");
     var grid = document.createElement("div");
     var cell = document.createElement("div");
@@ -153,15 +172,16 @@ GameManager.prototype.fillLegend = function () {
     grid.classList.add('legend-grid');
     cell.classList.add('legend-cell');
     cell.classList.add('cell-' + exp);
-    img.src = "style/img/" + exp + "." + extension;
-    img.alt = "Cupcake for tile " + exp;
+    img.src = superCupcake ? superCupcake.image : "style/img/" + exp + ".jpg";
+    img.alt = superCupcake ? "Georgetown Cupcake " + superCupcake.name : "Georgetown Cupcake " + Localize(exp);
     cell.appendChild(img);
     grid.appendChild(cell);
     row.appendChild(grid);
-    var calories = kcal(exp);
-    p.textContent = Localize(exp) + (calories ? "  (" + calories + " Kcal)" : "  (Super Cupcake)");
-    row.appendChild(p);
 
+    var calories = kcal(exp);
+    var name = superCupcake ? superCupcake.name : Localize(exp);
+    p.textContent = name + (calories ? " (" + calories + " Kcal)" : " (Super Cupcake)");
+    row.appendChild(p);
     legend[0].appendChild(row);
   }
 
