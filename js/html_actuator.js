@@ -69,7 +69,11 @@ HTMLActuator.prototype.addTile = function (tile) {
   inner.classList.add("tile-inner");
   // inner.textContent = tile.value;
   // img.style.width = '100%';
-  img.src = "style/img/" + tile.value + ".jpg";
+  // Use the original cupcake photos for classic tiles and illustrated art for new super tiles.
+  var imageValue = Math.min(tile.value, 131072);
+  var imageExtension = imageValue > 8192 ? ".svg" : ".jpg";
+  img.alt = "Cupcake tile " + tile.value;
+  img.src = "style/img/" + imageValue + imageExtension;
   inner.appendChild(img);
 
   if (tile.previousPosition) {
