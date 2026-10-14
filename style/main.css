@@ -871,3 +871,27 @@ hr {
   margin-top: 40px;
   margin-right: 20px;
   text-align: right; }
+
+
+.tile-mode-control {
+  clear: both;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.tile-mode-toggle {
+  display: inline-block;
+  background: #f888a9;
+  border-radius: 3px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #3c1b1a;
+  min-height: 40px;
+  line-height: 42px;
+  cursor: pointer;
+}
+
+.tile-mode-toggle:focus {
+  outline: 2px solid #582e74;
+  outline-offset: 3px;
+}
